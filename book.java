@@ -4,21 +4,23 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class book implements Serializable {
 	
-	private String T;
-	private String A;
-	private String C;
-	private int ID;
+	private String title;
+	private String author;
+	private String callNumber;
+	private int bookID;
+	//above private variables are modified into meaningful variables
 	
 	private enum STATE { AVAILABLE, ON_LOAN, DAMAGED, RESERVED };
 	private STATE state;
 	
 	
 	public book(String author, String title, String callNo, int id) {
-		this.A = author;
-		this.T = title;
-		this.C = callNo;
-		this.ID = id;
+		this.author = author;
+		this.title = title;
+		this.callNumber = callNo;
+		this.bookID = id;
 		this.state = STATE.AVAILABLE;
+		//above modified variables are replaaced in this method
 	}
 	
 	public String toString() {
