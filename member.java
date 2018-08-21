@@ -5,26 +5,28 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class member implements Serializable {
+public class Member implements Serializable {//class name is modified by replacing first letter into upper case
 
-	private String LN;
-	private String FN;
-	private String EM;
-	private int PN;
-	private int ID;
-	private double FINES;
+	private String lastName;
+	private String firstName;
+	private String emailAddress;
+	private int contactNumber;
+	private int memberID;
+	private double fines;
 	
-	private Map<Integer, loan> LNS;
+	private Map<Integer, loan> loans;
+	//above private variables are modified by using meaningful variable nemes
 
 	
-	public member(String lastName, String firstName, String email, int phoneNo, int id) {
-		this.LN = lastName;
-		this.FN = firstName;
-		this.EM = email;
-		this.PN = phoneNo;
-		this.ID = id;
+	public member(String lastName, String firstName, String email, int contactNo, int id) {
+		this.lastName = lastName;
+		this.lastName = firstName;
+		this.emailAddress = email;
+		this.contactNumber = contactNo;
+		this.memberID = id;
 		
-		this.LNS = new HashMap<>();
+		this.loans = new HashMap<>();
+		//above changes are applied here in the method
 	}
 
 	
