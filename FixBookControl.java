@@ -1,11 +1,11 @@
 public class FixBookControl {
 	
-	private FixBookUI ui;
+	private FixBookUI userInterface; //changed the veriable name into meaningful name 
 	private enum CONTROL_STATE { INITIALISED, READY, FIXING };
 	private CONTROL_STATE state;
 	
-	private library library;
-	private book currentBook;
+	private library Library; //class name modified "Starting with uppercase latter"
+	private book CurrentBook; //class name modified "Starting with uppercase latter"
 
 
 	public FixBookControl() {
@@ -14,12 +14,12 @@ public class FixBookControl {
 	}
 	
 	
-	public void setUI(FixBookUI ui) {
+	public void setUI(FixBookUI userInterface) {//chaneged the parameter name 
 		if (!state.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("FixBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = ui;
-		ui.setState(FixBookUI.UI_STATE.READY);
+		this.userInterface = userInterface; 
+		userInterface.setState(FixBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;		
 	}
 
