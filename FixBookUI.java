@@ -31,13 +31,13 @@ public class FixBookUI {
 			switch (state) {
 			
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				String bookString = input("Scan Book (<enter> completes): "); //change the variable name into meaninful name
+				if (bookString.length() == 0) { //fixed the variable name
 					control.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
+						int bookId = Integer.valueOf(bookString).intValue(); //fixed the variable name
 						control.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
@@ -47,9 +47,9 @@ public class FixBookUI {
 				break;	
 				
 			case FIXING:
-				String ans = input("Fix Book? (Y/N) : ");
+				String answer = input("Fix Book? (Y/N) : "); //change the variable name into meaninful name
 				boolean fix = false;
-				if (ans.toUpperCase().equals("Y")) {
+				if (answer.toUpperCase().equals("Y")) { //fixed the variable name
 					fix = true;
 				}
 				control.fixBook(fix);
