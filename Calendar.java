@@ -36,11 +36,11 @@ public class Calendar {
 	}
 	public synchronized Date Date() {
 		try {
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
-			return cal.getTime();
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);   //fix the veriable name
+	        calendar.set(java.util.Calendar.MINUTE, 0);   //fix the veriable name
+	        calendar.set(java.util.Calendar.SECOND, 0);  //fix the veriable name 
+	        cal.set(java.util.Calendar.MILLISECOND, 0);  //fix the veriable name
+			return calendar.getTime();
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -49,9 +49,9 @@ public class Calendar {
 
 	public synchronized Date getDueDate(int loanPeriod) {
 		Date now = Date();
-		cal.add(java.util.Calendar.DATE, loanPeriod);
+		calendar.add(java.util.Calendar.DATE, loanPeriod); //fix the veriable name
 		Date dueDate = cal.getTime();
-		cal.setTime(now);
+		calendar.setTime(now); //fix the veriable name
 		return dueDate;
 	}
 	
