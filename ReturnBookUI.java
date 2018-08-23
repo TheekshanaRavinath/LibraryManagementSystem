@@ -29,13 +29,13 @@ public class ReturnBookUI {
 				break;
 				
 			case READY:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
+				String bookString = input("Scan Book (<enter> completes): "); //fixed the veriable name
+				if (bookString.length() == 0) { //fixed the veriable name
 					control.scanningComplete();
 				}
 				else {
 					try {
-						int bookId = Integer.valueOf(bookStr).intValue();
+						int bookId = Integer.valueOf(bookString).intValue(); //fixed the veriable name
 						control.bookScanned(bookId);
 					}
 					catch (NumberFormatException e) {
