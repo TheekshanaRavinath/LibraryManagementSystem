@@ -69,24 +69,24 @@ public class BorrowBookUI {
 			
 				
 			case SCANNING:
-				String bookStr = input("Scan Book (<enter> completes): ");
-				if (bookStr.length() == 0) {
-					control.Complete();
+				String bookStatus = input("Scan Book (<enter> completes): ");//changed variable name into bookStatus
+				if (bookStatus.length() == 0) { //changed the parameter
+					control.complete(); 
 					break;
 				}
 				try {
-					int bookId = Integer.valueOf(bookStr).intValue();
+					int bookId = Integer.valueOf(bookStatus).intValue();
 					control.Scanned(bookId);
 					
-				} catch (NumberFormatException e) {
-					output("Invalid Book Id");
+				} catch (NumberFormatException error) {
+					output("Invalid Book Id" + error); //output shows the error
 				} 
 				break;
 					
 				
 			case FINALISING:
-				String ans = input("Commit loans? (Y/N): ");
-				if (ans.toUpperCase().equals("N")) {
+				String answer = input("Commit loans? (Y/N): "); //changed variable name into answer
+				if (answer.toUpperCase().equals("N")) { //changed the parameter according to variable name
 					control.cancel();
 					
 				} else {
