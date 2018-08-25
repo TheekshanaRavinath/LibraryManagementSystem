@@ -5,8 +5,8 @@ public class ReturnBookUI {
 
 	public static enum UI_STATE { INITIALISED, READY, INSPECTING, COMPLETED };
 
-	private ReturnBookControl control;
-	private Scanner input;
+	private ReturnBookControl control; //changed the veriable name into meaningful name 
+	private Scanner input; //changed the veriable name into meaningful name 
 	private UI_STATE state;
 
 	
