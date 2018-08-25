@@ -9,7 +9,7 @@ public class ReturnBookControl {
 	
 
 	public ReturnBookControl() {
-		this.library = library.INSTANCE();
+		this.Library = Library.INSTANCE(); // Change the Class name into upper case letter
 		state = CONTROL_STATE.INITIALISED;
 	}
 	
@@ -38,7 +38,7 @@ public class ReturnBookControl {
 			userInterface.display("Book has not been borrowed");//fixed the veriable name
 			return;
 		}		
-		currentLoan = library.getLoanByBookId(bookId);	
+		currentLoan = Library.getLoanByBookId(bookId);	
 		double overDueFine = 0.0;
 		if (currentLoan.isOverDue()) {
 			overDueFine = library.calculateOverDueFine(currentLoan);
