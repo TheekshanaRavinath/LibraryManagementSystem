@@ -4,8 +4,8 @@ public class PayFineControl {
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state;
 	
-	private library library;
-	private member member;;
+	private Library library;//changed class name first letter into a capital letter
+	private Member member;//deleted one semicolon and changed class name first letter into a capital letter
 
 
 	public PayFineControl() {
