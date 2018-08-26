@@ -1,6 +1,6 @@
 public class PayFineControl {
 	
-	private PayFineUI ui;
+	private PayFineUserInterface ui;//changed class name into a meaningful name
 	private enum CONTROL_STATE { INITIALISED, READY, PAYING, COMPLETED, CANCELLED };
 	private CONTROL_STATE state;
 	
@@ -14,12 +14,12 @@ public class PayFineControl {
 	}
 	
 	
-	public void setUI(PayFineUI ui) {
+	public void setUI(PayFineUserInterface ui) { //changed class name into a meaningful name
 		if (!state.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("PayFineControl: cannot call setUI except in INITIALISED state");
 		}	
 		this.ui = ui;
-		ui.setState(PayFineUI.UI_STATE.READY);
+		ui.setState(PayFineUserInterface.UI_STATE.READY);//changed class name into a meaningful name
 		state = CONTROL_STATE.READY;		
 	}
 
@@ -35,13 +35,13 @@ public class PayFineControl {
 			return;
 		}
 		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.PAYING);
+		ui.setState(PayFineUserInterface.UI_STATE.PAYING);//changed class name into a meaningful name
 		state = CONTROL_STATE.PAYING;
 	}
 	
 	
 	public void cancel() {
-		ui.setState(PayFineUI.UI_STATE.CANCELLED);
+		ui.setState(PayFineUserInterface.UI_STATE.CANCELLED);//changed class name into a meaningful name
 		state = CONTROL_STATE.CANCELLED;
 	}
 
@@ -55,7 +55,7 @@ public class PayFineControl {
 			ui.display(String.format("Change: $%.2f", change));
 		}
 		ui.display(member.toString());
-		ui.setState(PayFineUI.UI_STATE.COMPLETED);
+		ui.setState(PayFineUserInterface.UI_STATE.COMPLETED);//changed class name into a meaningful name
 		state = CONTROL_STATE.COMPLETED;
 		return change;
 	}
