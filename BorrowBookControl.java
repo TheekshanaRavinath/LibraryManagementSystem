@@ -3,7 +3,7 @@ import java.util.List;
 
 public class BorrowBookControl {
 	
-	private BorrowBookUI ui;
+	private BorrowBookUserInterface ui;//changed the variable name into a meaningful name
 	
 	private Library library; //changed class name first letter into capital
 	private Member member; //changed class name first letter into capital
@@ -21,12 +21,12 @@ public class BorrowBookControl {
 	}
 	
 
-	public void setUI(BorrowBookUI ui) {
+	public void setUI(BorrowBookUserInterface ui) {
 		if (!state.equals(CONTROL_STATE.INITIALISED)) 
 			throw new RuntimeException("BorrowBookControl: cannot call setUI except in INITIALISED state");
 			
 		this.ui = ui;
-		ui.setState(BorrowBookUI.UI_STATE.READY);
+		ui.setState(BorrowBookUserInterface.UI_STATE.READY);
 		state = CONTROL_STATE.READY;		
 	}
 
@@ -42,12 +42,12 @@ public class BorrowBookControl {
 		}
 		if (library.memberCanBorrow(member)) { //Above changed variable used as a parameter
 			PENDING = new ArrayList<>();
-			ui.setState(BorrowBookUI.UI_STATE.SCANNING);
+			ui.setState(BorrowBookUserInterface.UI_STATE.SCANNING);
 			state = CONTROL_STATE.SCANNING; }
 		else 
 		{
 			ui.display("Member cannot borrow at this time");
-			ui.setState(BorrowBookUI.UI_STATE.RESTRICTED); }}
+			ui.setState(BorrowBookUserInterface.UI_STATE.RESTRICTED); }}
 	
 	
 	public void scanned(int bookId) { //change method name into lowerCamelcase
@@ -85,7 +85,7 @@ public class BorrowBookControl {
 				ui.display(book.toString());
 			}
 			COMPLETED = new ArrayList<loan>();
-			ui.setState(BorrowBookUI.UI_STATE.FINALISING);
+			ui.setState(BorrowBookUserInterface.UI_STATE.FINALISING);
 			state = CONTROL_STATE.FINALISING;
 		}
 	}
@@ -103,13 +103,13 @@ public class BorrowBookControl {
 		for (loan loan : COMPLETED) {
 			ui.display(loan.toString());
 		}
-		ui.setState(BorrowBookUI.UI_STATE.COMPLETED);
+		ui.setState(BorrowBookUserInterface.UI_STATE.COMPLETED);
 		state = CONTROL_STATE.COMPLETED;
 	}
 
 	
 	public void cancel() {
-		ui.setState(BorrowBookUI.UI_STATE.CANCELLED);
+		ui.setState(BorrowBookUserInterface.UI_STATE.CANCELLED);
 		state = CONTROL_STATE.CANCELLED;
 	}
 	
