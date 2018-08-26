@@ -4,11 +4,11 @@ import java.util.concurrent.TimeUnit;
 public class Calendar {
 	
 	private static Calendar self;
-	private static java.util.Calendar cal;
+	private static java.util.Calendar calendar; //changed the veriable name into meaningfull name 
 	
 	
 	private Calendar() {
-		cal = java.util.Calendar.getInstance();
+		calendar = java.util.Calendar.getInstance(); //changed the veriable name into meaningfull name 
 	}
 	
 	public static Calendar getInstance() {
@@ -19,16 +19,16 @@ public class Calendar {
 	}
 	
 	public void incrementDate(int days) {
-		cal.add(java.util.Calendar.DATE, days);		
+		calendar.add(java.util.Calendar.DATE, days); //fix the veriable name		
 	}
 	
 	public synchronized void setDate(Date date) {
 		try {
-			cal.setTime(date);
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
+			calendar.setTime(date); //fix the veriable name
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0); //fix the veriable name  
+	        calendar.set(java.util.Calendar.MINUTE, 0); //fix the veriable name 
+	        calendar.set(java.util.Calendar.SECOND, 0); //fix the veriable name  
+	        calendar.set(java.util.Calendar.MILLISECOND, 0); //fix the veriable name
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -36,11 +36,11 @@ public class Calendar {
 	}
 	public synchronized Date Date() {
 		try {
-	        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);  
-	        cal.set(java.util.Calendar.MINUTE, 0);  
-	        cal.set(java.util.Calendar.SECOND, 0);  
-	        cal.set(java.util.Calendar.MILLISECOND, 0);
-			return cal.getTime();
+	        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);   //fix the veriable name
+	        calendar.set(java.util.Calendar.MINUTE, 0);   //fix the veriable name
+	        calendar.set(java.util.Calendar.SECOND, 0);  //fix the veriable name 
+	        cal.set(java.util.Calendar.MILLISECOND, 0);  //fix the veriable name
+			return calendar.getTime();
 		}
 		catch (Exception e) {
 			throw new RuntimeException(e);
@@ -49,9 +49,9 @@ public class Calendar {
 
 	public synchronized Date getDueDate(int loanPeriod) {
 		Date now = Date();
-		cal.add(java.util.Calendar.DATE, loanPeriod);
+		calendar.add(java.util.Calendar.DATE, loanPeriod); //fix the veriable name
 		Date dueDate = cal.getTime();
-		cal.setTime(now);
+		calendar.setTime(now); //fix the veriable name
 		return dueDate;
 	}
 	
