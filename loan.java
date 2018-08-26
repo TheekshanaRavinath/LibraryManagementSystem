@@ -38,37 +38,37 @@ public class Loan implements Serializable { //changed class name's first letter 
 
 	
 	public Integer getId() {
-		return ID;
+		return loanID;
 	}
 
 
 	public Date getDueDate() {
-		return D;
+		return date;
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.getId()).append(" : ")
-		  .append(M.getLastName()).append(", ").append(M.getFirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.Title()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
+		StringBuilder stringBuilder = new StringBuilder();
+		sb.append("Loan:  ").append(loanID).append("\n")
+		  .append("  Borrower ").append(Member.getId()).append(" : ")
+		  .append(Member.getLastName()).append(", ").append(Member.getFirstName()).append("\n")
+		  .append("  Book ").append(Book.bookID()).append(" : " )
+		  .append(book.title()).append("\n")
+		  .append("  DueDate: ").append(simpleDateFormat.format(date)).append("\n")
 		  .append("  State: ").append(state);		
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 
 	public member Member() {
-		return M;
+		return member;
 	}
 
 
 	public book Book() {
-		return B;
+		return book;
 	}
 
 
