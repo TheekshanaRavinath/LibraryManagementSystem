@@ -1,25 +1,25 @@
 public class ReturnBookControl {
 
-	private ReturnBookUI ui;
+	private ReturnBookUI userInterface;//changed the veriable name into meaningful name 
 	private enum CONTROL_STATE { INITIALISED, READY, INSPECTING };
 	private CONTROL_STATE state;
 	
-	private library library;
-	private loan currentLoan;
+	private Library library;//class name modified "Starting with uppercase latter"
+	private Loan currentLoan;//class name modified "Starting with uppercase latter"
 	
 
 	public ReturnBookControl() {
-		this.library = library.INSTANCE();
+		this.Library = Library.INSTANCE(); // Change the Class name into upper case letter
 		state = CONTROL_STATE.INITIALISED;
 	}
 	
 	
-	public void setUI(ReturnBookUI ui) {
+	public void setUI(ReturnBookUI userInterface) {
 		if (!state.equals(CONTROL_STATE.INITIALISED)) {
 			throw new RuntimeException("ReturnBookControl: cannot call setUI except in INITIALISED state");
 		}	
-		this.ui = ui;
-		ui.setState(ReturnBookUI.UI_STATE.READY);
+		this.userInterface = userInterface;
+		userInterface.setState(ReturnBookUI.UI_STATE.READY);//fixed the veriable name
 		state = CONTROL_STATE.READY;		
 	}
 
@@ -31,26 +31,26 @@ public class ReturnBookControl {
 		book currentBook = library.Book(bookId);
 		
 		if (currentBook == null) {
-			ui.display("Invalid Book Id");
+			userInterface.display("Invalid Book Id");
 			return;
 		}
 		if (!currentBook.On_loan()) {
-			ui.display("Book has not been borrowed");
+			userInterface.display("Book has not been borrowed");//fixed the veriable name
 			return;
 		}		
-		currentLoan = library.getLoanByBookId(bookId);	
+		currentLoan = Library.getLoanByBookId(bookId);	
 		double overDueFine = 0.0;
 		if (currentLoan.isOverDue()) {
 			overDueFine = library.calculateOverDueFine(currentLoan);
 		}
-		ui.display("Inspecting");
-		ui.display(currentBook.toString());
-		ui.display(currentLoan.toString());
+		userInterface.display("Inspecting");//fixed the veriable name
+		userInterface.display(currentBook.toString());//fixed the veriable name
+		userInterface.display(currentLoan.toString());//fixed the veriable name
 		
 		if (currentLoan.isOverDue()) {
-			ui.display(String.format("\nOverdue fine : $%.2f", overDueFine));
+			userInterface.display(String.format("\nOverdue fine : $%.2f", overDueFine));
 		}
-		ui.setState(ReturnBookUI.UI_STATE.INSPECTING);
+		userInterface.setState(ReturnBookUI.UI_STATE.INSPECTING);//fixed the veriable name
 		state = CONTROL_STATE.INSPECTING;		
 	}
 
@@ -59,7 +59,7 @@ public class ReturnBookControl {
 		if (!state.equals(CONTROL_STATE.READY)) {
 			throw new RuntimeException("ReturnBookControl: cannot call scanningComplete except in READY state");
 		}	
-		ui.setState(ReturnBookUI.UI_STATE.COMPLETED);		
+		userInterface.setState(ReturnBookUI.UI_STATE.COMPLETED);	//fixed the veriable name	
 	}
 
 
@@ -69,7 +69,7 @@ public class ReturnBookControl {
 		}	
 		library.dischargeLoan(currentLoan, isDamaged);
 		currentLoan = null;
-		ui.setState(ReturnBookUI.UI_STATE.READY);
+		userInterface.setState(ReturnBookUI.UI_STATE.READY);
 		state = CONTROL_STATE.READY;				
 	}
 
