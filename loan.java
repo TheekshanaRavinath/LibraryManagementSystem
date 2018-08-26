@@ -3,23 +3,24 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @SuppressWarnings("serial")
-public class loan implements Serializable {
+public class Loan implements Serializable { //changed class name's first letter into upper case
 	
 	public static enum LOAN_STATE { CURRENT, OVER_DUE, DISCHARGED };
 	
-	private int ID;
-	private book B;
-	private member M;
-	private Date D;
-	private LOAN_STATE state;
-
+	private int loanID;
+	private Book book;
+	private Member member;
+	private Date date;
+	private LOAN_STATE loanState;
+	//above private variable names are modified using meaningful variable names
 	
 	public loan(int loanId, book book, member member, Date dueDate) {
-		this.ID = loanId;
-		this.B = book;
-		this.M = member;
-		this.D = dueDate;
-		this.state = LOAN_STATE.CURRENT;
+		this.loanID = loanId;
+		this.book = book;
+		this.member = member;
+		this.date = dueDate;
+		this.loanState = LOAN_STATE.CURRENT;
+		//above modified variables are replaced in this method
 	}
 
 	
@@ -37,37 +38,37 @@ public class loan implements Serializable {
 
 	
 	public Integer getId() {
-		return ID;
+		return loanID;
 	}
 
 
 	public Date getDueDate() {
-		return D;
+		return date;
 	}
 	
 	
 	public String toString() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
-		StringBuilder sb = new StringBuilder();
-		sb.append("Loan:  ").append(ID).append("\n")
-		  .append("  Borrower ").append(M.getId()).append(" : ")
-		  .append(M.getLastName()).append(", ").append(M.getFirstName()).append("\n")
-		  .append("  Book ").append(B.ID()).append(" : " )
-		  .append(B.Title()).append("\n")
-		  .append("  DueDate: ").append(sdf.format(D)).append("\n")
+		StringBuilder stringBuilder = new StringBuilder();
+		sb.append("Loan:  ").append(loanID).append("\n")
+		  .append("  Borrower ").append(Member.getId()).append(" : ")
+		  .append(Member.getLastName()).append(", ").append(Member.getFirstName()).append("\n")
+		  .append("  Book ").append(Book.bookID()).append(" : " )
+		  .append(book.title()).append("\n")
+		  .append("  DueDate: ").append(simpleDateFormat.format(date)).append("\n")
 		  .append("  State: ").append(state);		
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 
 	public member Member() {
-		return M;
+		return member;
 	}
 
 
 	public book Book() {
-		return B;
+		return book;
 	}
 
 

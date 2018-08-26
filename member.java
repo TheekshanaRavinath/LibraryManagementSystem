@@ -5,48 +5,50 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings("serial")
-public class member implements Serializable {
+public class Member implements Serializable {//class name is modified by replacing first letter into upper case
 
-	private String LN;
-	private String FN;
-	private String EM;
-	private int PN;
-	private int ID;
-	private double FINES;
+	private String lastName;
+	private String firstName;
+	private String emailAddress;
+	private int contactNumber;
+	private int memberID;
+	private double fines;
 	
-	private Map<Integer, loan> LNS;
+	private Map<Integer, loan> loans;
+	//above private variables are modified by using meaningful variable nemes
 
 	
-	public member(String lastName, String firstName, String email, int phoneNo, int id) {
-		this.LN = lastName;
-		this.FN = firstName;
-		this.EM = email;
-		this.PN = phoneNo;
-		this.ID = id;
+	public member(String lastName, String firstName, String email, int contactNo, int id) {
+		this.lastName = lastName;
+		this.lastName = firstName;
+		this.emailAddress = email;
+		this.contactNumber = contactNo;
+		this.memberID = id;
 		
-		this.LNS = new HashMap<>();
+		this.loans = new HashMap<>();
+		//above changes are applied here in the method
 	}
 
 	
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		sb.append("Member:  ").append(ID).append("\n")
-		  .append("  Name:  ").append(LN).append(", ").append(FN).append("\n")
-		  .append("  Email: ").append(EM).append("\n")
-		  .append("  Phone: ").append(PN)
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Member:  ").append(memberID).append("\n")
+		  .append("  Name:  ").append(loan).append(", ").append(FN).append("\n")
+		  .append("  Email: ").append(email).append("\n")
+		  .append("  Phone: ").append(contactNumber)
 		  .append("\n")
 		  .append(String.format("  Fines Owed :  $%.2f", FINES))
 		  .append("\n");
 		
-		for (loan loan : LNS.values()) {
-			sb.append(loan).append("\n");
+		for (loan loan : loans.values()) {
+			stringBuilder.append(loan).append("\n");
 		}		  
-		return sb.toString();
+		return stringBuilder.toString();
 	}
 
 	
 	public int getId() {
-		return ID;
+		return memberID;
 	}
 
 	
@@ -56,18 +58,18 @@ public class member implements Serializable {
 
 	
 	public int getNumberOfCurrentLoans() {
-		return LNS.size();
+		return loans.size();
 	}
 
 	
 	public double getFinesOwed() {
-		return FINES;
+		return fines;
 	}
 
 	
 	public void takeOutLoan(loan loan) {
-		if (!LNS.containsKey(loan.getId())) {
-			LNS.put(loan.getId(), loan);
+		if (!loans.containsKey(loan.getId())) {
+			loans.put(loan.getId(), loan);
 		}
 		else {
 			throw new RuntimeException("Duplicate loan added to member");
@@ -76,12 +78,12 @@ public class member implements Serializable {
 
 	
 	public String getLastName() {
-		return LN;
+		return lastName;
 	}
 
 	
 	public String getFirstName() {
-		return FN;
+		return firstName;
 	}
 
 
